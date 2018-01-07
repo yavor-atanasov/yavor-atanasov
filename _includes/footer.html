@@ -1,0 +1,31 @@
+<footer class="site-footer">
+
+    <div class="site-copy">
+        &copy; {{ site.time | date: '%Y' }}<span class="site-author">{{ site.author }}</span>
+    </div>
+    <div class="site-contact">
+        <ul>
+        {% if site.keybase %}
+        <li><a href="{{ site.keybase }}">Keybase</a></li>
+        {% endif %}
+
+        {% if site.github_username %}
+        <li><a target="_blank" rel="external" href="https://github.com/{{ site.github_username }}">Github</a></li>
+        {% endif %}
+
+        {% if site.twitter_username %}
+        <li><a target="_blank" rel="external" href="https://twitter.com/{{ site.twitter_username }}">Twitter</a></li>
+        {% endif %}
+
+        {% if site.linkedin %}
+        <li><a target="_blank" rel="external" href="{{ site.linkedin }}">LinkedIn</a></li>
+        {% endif %}
+        </ul>
+    </div>
+
+</footer>
+<!-- site-footer -->
+
+{% if page.syntax %}
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/syntax.css">
+{% endif %}
