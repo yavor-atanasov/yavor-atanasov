@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+  <!-- Common metas -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+  CloudFormation, HTML and virtual infrastructure | Yavor Atanasov
+  
+  </title>
+
+  <!-- SEO metas -->
+  <meta name="description" content="We are virtualising hardware the same way we started digitising information years ago when the web came about. Yet a lot of us are missing the point.">
+  <link rel="canonical" href="yavkata.co.uk/2014/cloudformation-html-and-virtual-infrastructure/">
+  <link rel="alternate" type="application/rss+xml" title="Yavor Atanasov" href="yavkata.co.uk/feed.xml">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Lora:400,400i,700" rel="stylesheet">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+</head>
+
+
+  <body>
+
+    <div class="site">
+
+      <header class="site-header">
+
+  <h1 class="site-title">
+    <a href="/" title="Home page"><img class="site-logo" src="/assets/img/yavor-site-logo.svg"></a>
+  </h1>
+
+  <nav class="site-nav">
+    
+      
+      
+    <a href="/"  >Home</a>
+    
+      
+      
+    <a href="/bits-and-bytes/"   title="Bits and bytes I've done and written" >Bits and bytes</a>
+    
+      
+      
+    <a href="/about/"   title="Learn about me" >About me</a>
+    
+      
+      
+    <a href="/contact/"   title="Ping me a message" >Contact</a>
+    
+  </nav>
+
+</header>
+<!-- site-header -->
+
+
+      <div class="site-content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">CloudFormation, HTML and virtual infrastructure</h1>
+    <time class="post-date" datetime="2014-09-28 00:00:00 +0000">
+    
+    
+    Sept.
+      
+    28th
+    2014
+    </time>
+  </header>
+
+  <div class="post-content pretty-links">
+    <p>We are virtualising hardware the same way we started digitising information years ago when the web came about. Yet a lot of us are missing the point.</p>
+
+<h2 id="lets-look-at-the-very-basics-of-the-web">Let’s look at the very basics of the web</h2>
+
+<p>Books, video, audio - all forms of physical data carriers were transformed into bytes that are easily accessible, transferable and reproducible. If I want to create a web page, I define it declaratively using HTML. I describe all text and images that make up my page and then I let the browser render that. I can then start serving that HTML page to the rest of the world and people’s browsers will render it in the exact same way. The browser parses the HTML and creates all headings, paragraphs, links etc.</p>
+
+<p>Take HTML out of that picture for a moment. On one end it’s me with my web page - at the other end are myriads of users with browsers that have internal APIs for rendering headings, paragraphs, images etc. All those users need to render my web page in the same shape that I intended it. Since I don’t have a language to describe my page, I have to send my users instructions about which API methods they have to call in their browser, in what order and what arguments they have to pass in. Then my users will have to follow those instructions and if all goes well, they will manage to render my web page and read it.</p>
+
+<p>That’s unthinkably absurd and makes the web useless doesn’t it. My web page will never be reliably reproduced and people will get sick of manually programming their browsers to render my page every time. Soon they will abandon that way of consuming data because it’s time consuming, unreliable and too tedious. The web would be dead without HTML.</p>
+
+<p>Why did I just take 3 mins of your life stating quite obvious and simple concepts? Well, consider this:</p>
+
+<h2 id="virtual-infrastructure-as-a-web-page">Virtual infrastructure as a web page</h2>
+
+<p><strong>Scenario:</strong> <em>I’ve created a virtual infrastructure stack, just like my web page. Virtual machines, networks, storage devices and firewalls are like my headings, paragraphs, images and links. Cloud providers are the browsers that can render all those elements and build my infrastructure stack. People want to reproduce my infrastructure stack.</em></p>
+
+<p>This scenario is exactly equivalent to the one described above. Yet a lot of authors of infrastructure stacks solve that problem by documenting the manual steps people need to do to recreate those stacks. They make people click buttons, call individual APIs, follow a certain order…and then if all goes well, they manage to render that infrastructure. Absolute nonsense.</p>
+
+<h2 id="aws-cloudformation-is-the-html-for-virtual-infrastructure">AWS CloudFormation is the HTML for virtual infrastructure</h2>
+
+<p>Hardware is now software. So let’s make it easily accessible, transferable and reproducible. Let’s stop fooling around with pushing buttons, and individual API calls. Let’s describe our infrastructural designs declaratively once in a document exactly the way we want it. Then we can distribute that and people can just send that to the cloud provider they use and let them render that.</p>
+
+<p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html">CloudFormation</a> is one of the technologies that can pave the way towards commoditising cloud computing. It let’s you define infrastructure the same way HTML let’s you define data. <strong>When working with AWS, CloudFormation should be the only way to build infrastructure.</strong> I’d even argue that should have been the only interface AWS provides. It is the right level of abstraction for defining and building cloud architectures. The APIs underneath are too low of a level for that.</p>
+
+<p>Some of the core reasons for using CloudFormation are:</p>
+
+<ul>
+  <li>Reproducibility and determinism</li>
+  <li>Possibility to version infrastructure alongside the software that runs on it</li>
+  <li>Let AWS do the dependency resolution for the resources and determine the order they have to be created in</li>
+  <li>Let them deal with their individual APIs, handle errors, retries etc.</li>
+</ul>
+
+<h2 id="does-that-mean-we-need-standardised-specification-and-cross-provider-compatibility">Does that mean we need standardised specification and cross-provider compatibility?</h2>
+
+<p>Following the “HTML and browser” analogy one would have to agree that we need a standard compatible with all cloud providers. That would definitely be nice and useful, but it’s early days. Cloud providers are very different in their approach to infrastructure and have different levels of functionality. As with the web, things will happen organically. The important thing for engineers is to resonate with the right vibes that appear in the technological cacophony we live in. CloudFormation seems like one.</p>
+
+  </div>
+
+</article>
+
+      </div>
+      <!-- site-content -->
+
+      <footer class="site-footer">
+
+    <div class="site-copy">
+        &copy; 2018<span class="site-author">Yavor Atanasov</span>
+    </div>
+    <div class="site-contact">
+        <ul>
+        
+        <li><a href="https://keybase.io/yavor_atanasov">Keybase</a></li>
+        
+
+        
+        <li><a target="_blank" rel="external" href="https://github.com/yavor-atanasov">Github</a></li>
+        
+
+        
+        <li><a target="_blank" rel="external" href="https://twitter.com/yavor_atanasov">Twitter</a></li>
+        
+
+        
+        <li><a target="_blank" rel="external" href="https://www.linkedin.com/in/yavoratanasov/">LinkedIn</a></li>
+        
+        </ul>
+    </div>
+
+</footer>
+<!-- site-footer -->
+
+
+
+
+    </div>
+
+  </body>
+
+</html>

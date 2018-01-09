@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title></title>
+    <description></description>
+    <link>yavkata.co.uk</link>
+    <atom:link href="yavkata.co.ukyavkata.co.uk/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Service resilience and deployment automation at the BBC</title>
+        <description>&lt;div class=&quot;video-container&quot;&gt;
+  &lt;iframe class=&quot;video&quot; src=&quot;https://www.youtube.com/embed/d6pU4C4PVoY&quot; frameborder=&quot;0&quot; gesture=&quot;media&quot; allow=&quot;encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;In 2014 I went to present some of my BBC team’s work at the &lt;a href=&quot;https://conferences.oreilly.com/velocity/velocityeu2014/public/schedule/detail/36837&quot;&gt;Velocity conf&lt;/a&gt; in Barcelona.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;The days of fixed physical infrastructure and isolated Ops teams are over. It is no longer excusable for a developer to write their code, throw it over a wall and let someone else deal with the impact.&lt;/p&gt;
+
+&lt;p&gt;As hardware becomes software, engineers are empowered to create infrastructure that is reproducible, scalable and specifically dedicated to their service. They can spin up identical environments that give them testing confidence. They can form automated pipelines to continuously push services to their audiences. They have the power and responsibility to shape their application, the machines that run it and the infrastructure that glues their service together.&lt;/p&gt;
+
+&lt;p&gt;For the BBC Platform team, which I am part of, this is exciting – we no longer have to be gate keepers and we could focus on being enablers.&lt;/p&gt;
+
+&lt;p&gt;In this talk, we will speak about the main ingredients that shape a service in the cloud and the path from a developers keyboard to the audience.&lt;/p&gt;
+
+&lt;p&gt;Key topics:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Building software cleanly and in a reproducible way and why this matters&lt;/li&gt;
+  &lt;li&gt;The fastest way to bake an AMI and some considerations for what to bake into the machine.&lt;/li&gt;
+  &lt;li&gt;The key benefits of being able to declaratively define and provision infrastructure as code&lt;/li&gt;
+  &lt;li&gt;Cosmos, the BBC tool that orchestrates and automates the deployment of software&lt;/li&gt;
+  &lt;li&gt;Integrating automated testing with a deployment pipeline.&lt;/li&gt;
+  &lt;li&gt;How teams change the way they develop and operate in order to fully maintain their services.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 28 Dec 2014 00:00:00 +0000</pubDate>
+        <link>yavkata.co.uk/2014/service-resilience-and-deployment-automation-at-the-bbc/</link>
+        <guid isPermaLink="true">yavkata.co.uk/2014/service-resilience-and-deployment-automation-at-the-bbc/</guid>
+      </item>
+    
+      <item>
+        <title>Using AWS CloudFormation for Deployment and Management at Scale at the BBC</title>
+        <description>&lt;div class=&quot;video-container&quot;&gt;
+  &lt;iframe class=&quot;video&quot; src=&quot;https://www.youtube.com/embed/Wk-tOPicq78&quot; frameborder=&quot;0&quot; gesture=&quot;media&quot; allow=&quot;encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Talking at AWS Re:Invent 2014 with one of my colleagues about the way BBC builds and deploys services.&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 28 Dec 2014 00:00:00 +0000</pubDate>
+        <link>yavkata.co.uk/2014/cloudformation-for-deployments-at-scale/</link>
+        <guid isPermaLink="true">yavkata.co.uk/2014/cloudformation-for-deployments-at-scale/</guid>
+      </item>
+    
+      <item>
+        <title>CloudFormation, HTML and virtual infrastructure</title>
+        <description>&lt;p&gt;We are virtualising hardware the same way we started digitising information years ago when the web came about. Yet a lot of us are missing the point.&lt;/p&gt;
+
+&lt;h2 id=&quot;lets-look-at-the-very-basics-of-the-web&quot;&gt;Let’s look at the very basics of the web&lt;/h2&gt;
+
+&lt;p&gt;Books, video, audio - all forms of physical data carriers were transformed into bytes that are easily accessible, transferable and reproducible. If I want to create a web page, I define it declaratively using HTML. I describe all text and images that make up my page and then I let the browser render that. I can then start serving that HTML page to the rest of the world and people’s browsers will render it in the exact same way. The browser parses the HTML and creates all headings, paragraphs, links etc.&lt;/p&gt;
+
+&lt;p&gt;Take HTML out of that picture for a moment. On one end it’s me with my web page - at the other end are myriads of users with browsers that have internal APIs for rendering headings, paragraphs, images etc. All those users need to render my web page in the same shape that I intended it. Since I don’t have a language to describe my page, I have to send my users instructions about which API methods they have to call in their browser, in what order and what arguments they have to pass in. Then my users will have to follow those instructions and if all goes well, they will manage to render my web page and read it.&lt;/p&gt;
+
+&lt;p&gt;That’s unthinkably absurd and makes the web useless doesn’t it. My web page will never be reliably reproduced and people will get sick of manually programming their browsers to render my page every time. Soon they will abandon that way of consuming data because it’s time consuming, unreliable and too tedious. The web would be dead without HTML.&lt;/p&gt;
+
+&lt;p&gt;Why did I just take 3 mins of your life stating quite obvious and simple concepts? Well, consider this:&lt;/p&gt;
+
+&lt;h2 id=&quot;virtual-infrastructure-as-a-web-page&quot;&gt;Virtual infrastructure as a web page&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Scenario:&lt;/strong&gt; &lt;em&gt;I’ve created a virtual infrastructure stack, just like my web page. Virtual machines, networks, storage devices and firewalls are like my headings, paragraphs, images and links. Cloud providers are the browsers that can render all those elements and build my infrastructure stack. People want to reproduce my infrastructure stack.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This scenario is exactly equivalent to the one described above. Yet a lot of authors of infrastructure stacks solve that problem by documenting the manual steps people need to do to recreate those stacks. They make people click buttons, call individual APIs, follow a certain order…and then if all goes well, they manage to render that infrastructure. Absolute nonsense.&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-cloudformation-is-the-html-for-virtual-infrastructure&quot;&gt;AWS CloudFormation is the HTML for virtual infrastructure&lt;/h2&gt;
+
+&lt;p&gt;Hardware is now software. So let’s make it easily accessible, transferable and reproducible. Let’s stop fooling around with pushing buttons, and individual API calls. Let’s describe our infrastructural designs declaratively once in a document exactly the way we want it. Then we can distribute that and people can just send that to the cloud provider they use and let them render that.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html&quot;&gt;CloudFormation&lt;/a&gt; is one of the technologies that can pave the way towards commoditising cloud computing. It let’s you define infrastructure the same way HTML let’s you define data. &lt;strong&gt;When working with AWS, CloudFormation should be the only way to build infrastructure.&lt;/strong&gt; I’d even argue that should have been the only interface AWS provides. It is the right level of abstraction for defining and building cloud architectures. The APIs underneath are too low of a level for that.&lt;/p&gt;
+
+&lt;p&gt;Some of the core reasons for using CloudFormation are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reproducibility and determinism&lt;/li&gt;
+  &lt;li&gt;Possibility to version infrastructure alongside the software that runs on it&lt;/li&gt;
+  &lt;li&gt;Let AWS do the dependency resolution for the resources and determine the order they have to be created in&lt;/li&gt;
+  &lt;li&gt;Let them deal with their individual APIs, handle errors, retries etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;does-that-mean-we-need-standardised-specification-and-cross-provider-compatibility&quot;&gt;Does that mean we need standardised specification and cross-provider compatibility?&lt;/h2&gt;
+
+&lt;p&gt;Following the “HTML and browser” analogy one would have to agree that we need a standard compatible with all cloud providers. That would definitely be nice and useful, but it’s early days. Cloud providers are very different in their approach to infrastructure and have different levels of functionality. As with the web, things will happen organically. The important thing for engineers is to resonate with the right vibes that appear in the technological cacophony we live in. CloudFormation seems like one.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+        <link>yavkata.co.uk/2014/cloudformation-html-and-virtual-infrastructure/</link>
+        <guid isPermaLink="true">yavkata.co.uk/2014/cloudformation-html-and-virtual-infrastructure/</guid>
+      </item>
+    
+      <item>
+        <title>Code snippet - defining a local undefined in JavaScript</title>
+        <description>&lt;p&gt;Although &lt;a href=&quot;https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.8.5&quot;&gt;already introduced features of ECMAScript5&lt;/a&gt; fix this, the global property undefined in older versions of JavaScript is writable just like any other property. This means someone can override it which can cause trouble in a shared environment where everyone assumes its value.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;
+  &lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;not undefined anymore&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arg1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arg2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// undefined is undefined in here&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;})(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This creates a locally scoped variable undefined that has the value of undefined (more on the type, value and variable undefined &lt;a href=&quot;http://javascriptweblog.wordpress.com/2010/08/16/understanding-undefined-and-preventing-referenceerrors/&quot;&gt;here&lt;/a&gt;). This way your code does not rely on the “fragile” global undefined and is more robust.
+More info:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/undefined&quot;&gt;Undefined – Mozilla Developer Network&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.8.5&quot;&gt;New in JavaScript 1.8.5&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://javascriptweblog.wordpress.com/2010/08/16/understanding-undefined-and-preventing-referenceerrors/&quot;&gt;Understanding JavaScript’s undefined&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 05 Apr 2012 00:00:00 +0000</pubDate>
+        <link>yavkata.co.uk/2012/code-snippet-javascript-defining-a-local-undefined/</link>
+        <guid isPermaLink="true">yavkata.co.uk/2012/code-snippet-javascript-defining-a-local-undefined/</guid>
+      </item>
+    
+      <item>
+        <title>Pixel work</title>
+        <description>&lt;p&gt;I enjoy creating graphics in all forms and for all kinds of purposes. Below are some samplers of my work. Some of the graphics were created for clients, logo competitions, posters, wallpapers or just for fun.&lt;/p&gt;
+
+&lt;h2 id=&quot;american-university-in-bulgaria-yearbook-2008&quot;&gt;American University in Bulgaria Yearbook 2008&lt;/h2&gt;
+&lt;p&gt;This is the cover of the American University in Bulgaria Yearbook 2008.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/yearbook-aubg.jpg&quot; alt=&quot;AUBG Yearbook&quot; title=&quot;AUBG Yearbook&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;esp-truckster-inspiration&quot;&gt;ESP Truckster Inspiration&lt;/h2&gt;
+&lt;p&gt;This is a wallpaper inspired by James Hetfield’s signature series ESP Truckster guitar. &lt;a href=&quot;/assets/img/pixel-work/ESP_James_Hetfield_Truckster_Wallpaper.jpg&quot;&gt;Download full size&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/esp-truckster-inspiration.jpg&quot; alt=&quot;ESP Truckster Inspiration&quot; title=&quot;ESP Truckster Inspiration wallpaper&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;gtweep-logo&quot;&gt;gTweep logo&lt;/h2&gt;
+&lt;p&gt;gTweep is a web application that brings a geo semantic approach to tweeting. It uses the Twitter and Google Maps APIs to create a unified interface for mapping tweets according to their geo-location. The logo had to reflect this unification of Google and Twitter.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/gtweep-logo.jpg&quot; alt=&quot;gTweep Logo&quot; title=&quot;gTweep logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;codeigniter-logo-wallpaper&quot;&gt;CodeIgniter Logo Wallpaper&lt;/h2&gt;
+&lt;p&gt;CodeIgniter is a great open-source PHP framework. Once I was looking for a CodeIgniter wallpaper to put on my desktop and could not find any. So I decided to redraw the logo and create one. &lt;a href=&quot;/assets/img/pixel-work/CodeIgniter_1600x1200.jpg&quot;&gt;Download full size&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/codeigniter-wallpaper.jpg&quot; alt=&quot;CodeIgniter Logo&quot; title=&quot;CodeIgniter wallpaper&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;texturesfreakcom-logo&quot;&gt;TexturesFreak.com Logo&lt;/h2&gt;
+&lt;p&gt;TexturesFreak.com is a mind-blowing website that provides an endless amount of free high quality textures. The freaky camera-like robot in the logo is Mr Frik. His true passion is going around town snapping textures all day long.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/texture-freak-logo.jpg&quot; alt=&quot;TexturesFreak Logo&quot; title=&quot;TexturesFreak Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;aura-spring&quot;&gt;Aura Spring&lt;/h2&gt;
+&lt;p&gt;During my work in radio AURA as a producer, I often enjoyed refreshing the studio desktop computers. This is a part of a series of wallpapers I did for AURA for spring 2008. It does not have any genius idea behind it, but it does look bright and fresh.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/aura-spring.jpg&quot; alt=&quot;Radio Aura Logo&quot; title=&quot;Radio AURA Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;aura-spring-daisies&quot;&gt;Aura Spring Daisies&lt;/h2&gt;
+&lt;p&gt;Yet another very bright and colorful theme that brings a touch of spring to your desktop.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/aura-spring-daisies.jpg&quot; alt=&quot;Radio Aura Logo&quot; title=&quot;Radio AURA Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;aura-winter&quot;&gt;Aura Winter&lt;/h2&gt;
+&lt;p&gt;This is a winter version of the AURA wallpaper.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/aura-winter.jpg&quot; alt=&quot;Radio Aura Logo&quot; title=&quot;Radio AURA Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;aura-pulse&quot;&gt;Aura Pulse&lt;/h2&gt;
+&lt;p&gt;Aura Pulse is another wallpaper for those who enjoy darker themes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/aura-pulse.jpg&quot; alt=&quot;Radio Aura Logo&quot; title=&quot;Radio AURA Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;aura-ink-splatter&quot;&gt;Aura Ink Splatter&lt;/h2&gt;
+&lt;p&gt;Aura Ink Splatter is one of my first wallpapers for radio Aura. Thought of the idea while I was having an exam and my desk was all messy and inked all over.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/aura-ink-splatter.jpg&quot; alt=&quot;Radio Aura Logo&quot; title=&quot;Radio AURA Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;students-vs-alumni&quot;&gt;Students vs Alumni&lt;/h2&gt;
+&lt;p&gt;Every year in the American University in Bulgaria there is a competition between current students and alumni. This is one of the posters for the event I created while I was still a student. Now, that I am part of the alumni, I am not quite sure my approach would be the same!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/students-vs-alumni.jpg&quot; alt=&quot;AUBG Alumni challenge&quot; title=&quot;AUBG Allumni challenge poster&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;sitemesh-logo&quot;&gt;Sitemesh logo&lt;/h2&gt;
+&lt;p&gt;SiteMesh is a web-page layout and decoration framework. I took part in a competition for a logo for the framework. Although my design did not win, it was among the finalists and I am proud of it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/sitemesh-logo.jpg&quot; alt=&quot;Sitemesh logo&quot; title=&quot;Sitemesh logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;weird-3d-spider-rendering&quot;&gt;Weird 3D Spider rendering&lt;/h2&gt;
+&lt;p&gt;This is one of my first attempts to explore sub-D modeling in 3Ds Max and rendering with V-Ray.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/3d-spider.jpg&quot; alt=&quot;3D spider&quot; title=&quot;3D spider&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;thomas-edison-inventing-the-bulb&quot;&gt;Thomas Edison Inventing the Bulb&lt;/h2&gt;
+&lt;p&gt;This is one of the scenes from a 3D animation I did with Bjorgvin Ivar Gudbrandsson and Dogg Lara Sigurgeirsdottir, colleagues of mine from my MSc Digital Media course. We had to re-create the moment when Thomas Edison finally got his bulb to work. For the history freaks - by no means do we want to argue whether he really was the first to invent the bulb!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/thomas-edison-inventing-the-bulb.jpg&quot; alt=&quot;Thomas Edison&quot; title=&quot;Thomas Edison&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-lab-of-thomas-edison-in-menlo-park&quot;&gt;The lab of Thomas Edison in Menlo Park&lt;/h2&gt;
+&lt;p&gt;This is a model of Thomas Edison’s laboratory in Menlo Park, New Jersey. This was one of the most difficult scenes to create a light system for. There are several sky portals bringing in light from the outside along with a system of spot and photometric lights to create the warmly lit environment of the night when the electric bulb was invented.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/edison-menlo-park-lab.jpg&quot; alt=&quot;Thomas Edison&quot; title=&quot;Thomas Edison&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-lab-of-thomas-edison-in-menlo-park---daylight&quot;&gt;The lab of Thomas Edison in Menlo Park - daylight&lt;/h2&gt;
+&lt;p&gt;This is an intermediate stage in the modeling of Thomas Edison’s lab rendered with a daytime light rig.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/edison-menlo-park-day.jpg&quot; alt=&quot;Thomas Edison&quot; title=&quot;Thomas Edison&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;puppet-evolution&quot;&gt;Puppet Evolution&lt;/h2&gt;
+&lt;p&gt;This shows the stages in the creation of the puppet characters for a website I did for an imaginary arts organization called The Monkey Death Cult (this was part of a coursework). Those puppets were later animated using the inverse kinematics system in Flash CS4.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/puppet-evolution.jpg&quot; alt=&quot;Puppet evolution&quot; title=&quot;Puppet evolution&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;mdc-under-construction-signs&quot;&gt;MDC under construction signs&lt;/h2&gt;
+&lt;p&gt;Those are the “under construction” signs I came up with for the Monkey Death Cult website.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/mdc-under-construction.jpg&quot; alt=&quot;puppets&quot; title=&quot;Puppets&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;happy-summer-project-logo&quot;&gt;Happy Summer Project Logo&lt;/h2&gt;
+&lt;p&gt;Happy Summer is a project I did for a databases class back in the university. We had to develop a database for a Work and Travel agency called Happy Summer. This is the logo I came up with for the project. Nothing better in the summer than lying under the sun.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/happy-summer-logo.jpg&quot; alt=&quot;happy summer logo&quot; title=&quot;Happy Summer Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;elab-logo&quot;&gt;Elab Logo&lt;/h2&gt;
+&lt;p&gt;The Enterprise Lab is managed by the University of Nottingham’s Institute for Enterprise. It provides entrepreneurial students and graduates from all disciplines with the advice and support. This is my entry in the competition for a logo.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/elab-logo.png&quot; alt=&quot;elab logo&quot; title=&quot;elab Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;axdale-logo&quot;&gt;Axdale Logo&lt;/h2&gt;
+&lt;p&gt;Axdale is a software company. This is the logo I created for the company as part of a logo competition.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/axdale-logo.jpg&quot; alt=&quot;Axdale logo&quot; title=&quot;Axdale Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;kollektor-logo&quot;&gt;Kollektor Logo&lt;/h2&gt;
+&lt;p&gt;Kollector is an audio-video web application. This design was part of the competition for a logo.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/kollector-logo.png&quot; alt=&quot;Kollektor logo&quot; title=&quot;Kollektor Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;ouija-board&quot;&gt;OUIJA Board&lt;/h2&gt;
+&lt;p&gt;I designed this OUIJA board as a background for an iPhone application that was supposed to tell you the future by contacting some spirits (don’t ask).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/ouija-board.png&quot; alt=&quot;OUIJA board&quot; title=&quot;OUIJA Board&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 13 Oct 2009 00:00:00 +0000</pubDate>
+        <link>yavkata.co.uk/2009/pixel-work/</link>
+        <guid isPermaLink="true">yavkata.co.uk/2009/pixel-work/</guid>
+      </item>
+    
+      <item>
+        <title>CCiPort - a video on demand platform</title>
+        <description>&lt;p&gt;&lt;strong&gt;CCiPort&lt;/strong&gt; is the final project for my MSc Digital Media course. It is a website that offers video on demand and, potentially, other media related opportunities to both staff and students of the Faculty of Creative and Cultural Industries at the University of Portsmouth. It is a web channel for the University TV and also a video showcase for the students from the Creative Technologies school.&lt;/p&gt;
+
+&lt;h2 id=&quot;short-intro&quot;&gt;Short Intro&lt;/h2&gt;
+
+&lt;p&gt;&lt;img class=&quot;img-inline-right&quot; src=&quot;/assets/img/master-project/cciport_dissertation.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The final project of my MSc Digital Media course, with the title CCiPort, involves the creation of a video on demand website for the School of Creative Technologies at the University of Portsmouth.&lt;/p&gt;
+
+&lt;p&gt;On the one hand, this website hosts all programs created by the school’s TV channel called CCiTV and has the option to stream live over the net.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, it is a website, where students from the School of Creative Technologies are able to upload their own videos (created either for a class or as a side project). These videos are available to lecturers who are registered on the website. The lecturers are able to view them and choose the best ones and feature them on the public part of the website where they can be viewed by anyone over the web.&lt;/p&gt;
+
+&lt;p&gt;This essentially loads CCiPort with two main functions – a web channel for CCiTV and a video showcase for the School of Creative Technologies.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshot-previews&quot;&gt;Screenshot previews&lt;/h2&gt;
+&lt;p&gt;Here is a quick screenshot overview of the front end of the system before we dive into architecture.&lt;/p&gt;
+
+&lt;h3 id=&quot;cciport-logo&quot;&gt;CCiPort Logo&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/master-project/cciport_1.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The logo of the website had to clearly show its connection with the faculty of Creative and Cultural Industries at the University of Portsmouth.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;home-page&quot;&gt;Home Page&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/master-project/cciport_2.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The Home page shows the best videos voted by professors (the so called “Our best bits”)&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;video-search&quot;&gt;Video Search&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/master-project/cciport_3.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;CCiPort provides extensive search options for filtering the video content according to categories, sets and keywords.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;upload-page&quot;&gt;Upload Page&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/master-project/cciport_4.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The video upload requires thourough description of the video to be entered - title, category, description, keywords. Only registered users can upload videos.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;registration&quot;&gt;Registration&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/master-project/cciport_5.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The registration process is designed in a way that makes it virtually impossible for someone outside the university to register. It uses AJAX to immediatelly check the entered data against the database to prevent errors.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;advanced-player&quot;&gt;Advanced Player&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/master-project/cciport_6.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This is the advanced flash application available only to lecturers. It enables lecturers to interactively create annotations onto the students videos as feedback.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;profile-page&quot;&gt;Profile Page&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/master-project/cciport_7.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The profile page shows the registered user’s videos only, including the annotations made by lecturers on those videos. This way they can get immediate and clear feedback from lecturers about the submitted material.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;project-objectives&quot;&gt;Project Objectives&lt;/h2&gt;
+
+&lt;p&gt;The requirements elicitation process starts with capturing the objectives and expectations of the project’s stakeholders. Based on the meetings and conversations with the clients of the current project several objectives were defined. All of those key points were successfully completed in the final result according to clients’ final evaluations. Some of the main objectives are as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Should be developed within a &lt;strong&gt;three and a half month period&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Must stream videos using &lt;strong&gt;Flash Media Streaming Server 3.5&lt;/strong&gt; and the associated with it RTMP (Real Time Protocol).&lt;/li&gt;
+  &lt;li&gt;Must be &lt;strong&gt;compatible with the latest versions of the leading web browsers at the time&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Must be &lt;strong&gt;secure&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;The website should support four types of user accounts - &lt;strong&gt;students, lecturers, CCiTV and administrator&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Should provide a &lt;strong&gt;system for annotating&lt;/strong&gt; student videos.&lt;/li&gt;
+  &lt;li&gt;Should allow &lt;strong&gt;easy maintenance&lt;/strong&gt; and should be able to accommodate &lt;strong&gt;further extensions&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Should be &lt;strong&gt;well designed&lt;/strong&gt; and &lt;strong&gt;easy to navigate&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;macro-architecture&quot;&gt;Macro Architecture&lt;/h2&gt;
+
+&lt;p&gt;An important first step before designing the web application is to create a model of the environment that it is going to run in. This will provide a macro view of the architecture before focusing on the separate elements.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;img-inline-right&quot; src=&quot;/assets/img/master-project/cciport_macro_architecture.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The CCiPort website is designed to make use of three separate server machines. One is the main Web server (running Apache) listening to HTTP requests and essentially hosting the web application including the PHP framework and the MySQL Database Management System.&lt;/p&gt;
+
+&lt;p&gt;Another machine is dedicated to encoding the uploaded videos into the proper format (the encoding software is chosen by the clients’ technical support team and is out of the scope of the current project). The encoding machine receives videos via the File Transfer Protocol (FTP) or HTTP, encodes them, creates thumbnails and transfers the ready videos to the streaming server (again via FTP or HTTP).&lt;/p&gt;
+
+&lt;p&gt;The third machine acts as a media streaming server that delivers all video content via the Real Time Messaging Protocol (RTMP). It runs the Flash Media Streaming Server 3.5, which also comes with an Apache server incorporated into the system. This way the third machine can listen to HTTP requests as well (and deliver media via that protocol if it has to). The delivery of the video content requires Flash Player 10 to be installed on the client machine.&lt;/p&gt;
+
+&lt;h2 id=&quot;php-application-architecture&quot;&gt;PHP Application Architecture&lt;/h2&gt;
+
+&lt;p&gt;CCiPort uses the MVC (Model-View-Controller) architectural pattern. The MVC pattern separates the components of the application into three groups – application logic components, data components and presentation components.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;img-inline-left&quot; src=&quot;/assets/img/master-project/cciport_codeigniter.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The CCiPort project utilizes the popular open-source PHP MVC framework called CodeIgniter.&lt;/p&gt;
+
+&lt;p&gt;Apart from being extremely light as a framework, CodeIgniter comes with an extensive library of classes that make easier the implementation of form validation, database manipulations, XSS filtering, authentication, sessions etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;flash-video-player-applications&quot;&gt;Flash Video Player Applications&lt;/h2&gt;
+
+&lt;p&gt;CCiPort offers three flash applications (or three versions of video players):&lt;/p&gt;
+
+&lt;h3 id=&quot;a-general-flash-video-player&quot;&gt;A general flash video player&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/master-project/cciport_base_player.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This player provides basic functionalities including playback controls, progress bar, volume controls, quality controls, etc. It is also able to catch live streams. This version of the video player is embedded on the Home page of the website and also the general video playback page. This version of the flash video player was based on the Actionscript 3 classes of the default player that comes with the installation of the FMS 3.5&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;annotation-reading-video-player&quot;&gt;Annotation-reading video player&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/master-project/cciport_captions_read_player.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This player is an extension to the basic player. It is able to load the annotations made by lecturers on the students’ personal videos. Therefore, this version of the player is only available on the profile page of the logged in users.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;annotation-creating-flash-video-player&quot;&gt;Annotation-creating flash video player&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/master-project/cciport_advanced_player.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the video player application available only to lecturers. Using that application the lecturer can interactively create annotations onto the video.&lt;/p&gt;
+
+&lt;p&gt;The Captions classes written to extend the basic functionality of the flash video player use an interesting method to transfer and keep the captions data. Instead of using XML (which is the usual way of transferring data when working with Actionscript) those classes use the Action Message Format (AMF) to allow binary serialization of Actionscript 3 native types and objects to be sent to the server side. This way PHP methods and functions can be referenced directly within Actionscript and the data can be stored in the MySQL database.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;final-words&quot;&gt;Final words&lt;/h2&gt;
+
+&lt;p&gt;This short overview of the CCiPort project just gives a basic hint of the development process and the used technologies and software. In case you are curious about any of the stages of the project and would like to dig deeper into some of its aspects, please contact me and I’ll be more than happy to answer all your questions.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Sep 2009 00:00:00 +0000</pubDate>
+        <link>yavkata.co.uk/2009/cciport-masters-final-project/</link>
+        <guid isPermaLink="true">yavkata.co.uk/2009/cciport-masters-final-project/</guid>
+      </item>
+    
+      <item>
+        <title>The Thomas Edison project - The Night of the First Light</title>
+        <description>&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/xc-yFfl68u8&quot; frameborder=&quot;0&quot; gesture=&quot;media&quot; allow=&quot;encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;The Night of the First Light is a 3D animation I did with a couple of colleagues of mine from the Digital Media course, Björgvin Ívar Guðbrandsson and Dögg Lára Sigurgeirsdóttir.&lt;/p&gt;
+
+&lt;p&gt;It was a very enjoyable and great learning experience. It gave me the chance to explore almost all aspects of 3D animation - modelling, lighting, rigging, animating, scripting, rendering etc.&lt;/p&gt;
+
+&lt;p&gt;All the work was done on 3Ds Max and the frames were rendered via the Mental Ray renderer. Although all the hard work is done and all frames are rendered, we still need to do some editting in order to completely finish the short film. The animation as a whole is intended for stereoscopic showing.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 24 Jun 2009 00:00:00 +0000</pubDate>
+        <link>yavkata.co.uk/2009/the-night-of-the-first-light/</link>
+        <guid isPermaLink="true">yavkata.co.uk/2009/the-night-of-the-first-light/</guid>
+      </item>
+    
+      <item>
+        <title>AUBG 2008 Yearbook</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/pixel-work/yearbook-aubg.jpg&quot; alt=&quot;AUBG Yearbook&quot; title=&quot;AUBG Yearbook&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Doing the design and layout of the yearbook for the American University in Bulgaria was real pleasure and honor, especially when I was one of the graduating students.&lt;/p&gt;
+
+&lt;p&gt;This project was a serious and tedious task since the yearbook was 74 pages, but it was also one of the most rewarding projects I have done. What you see here is the yearbook cover. It is a collage containing different elements and symbols that will always remind the graduates of the most exciting four years of their lives. Not all symbols are so obvious…for some of them you need to look closer! :)&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 May 2008 00:00:00 +0000</pubDate>
+        <link>yavkata.co.uk/2008/aubg-yearbook/</link>
+        <guid isPermaLink="true">yavkata.co.uk/2008/aubg-yearbook/</guid>
+      </item>
+    
+  </channel>
+</rss>

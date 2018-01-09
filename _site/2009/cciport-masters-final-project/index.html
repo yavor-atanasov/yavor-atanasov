@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+  <!-- Common metas -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+  CCiPort - a video on demand platform | Yavor Atanasov
+  
+  </title>
+
+  <!-- SEO metas -->
+  <meta name="description" content="CCiPort is the final project for my MSc Digital Media course. It is a website that offers video on demand, live streaming and additional functionality for students and teachers.">
+  <link rel="canonical" href="yavkata.co.uk/2009/cciport-masters-final-project/">
+  <link rel="alternate" type="application/rss+xml" title="Yavor Atanasov" href="yavkata.co.uk/feed.xml">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Lora:400,400i,700" rel="stylesheet">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+</head>
+
+
+  <body>
+
+    <div class="site">
+
+      <header class="site-header">
+
+  <h1 class="site-title">
+    <a href="/" title="Home page"><img class="site-logo" src="/assets/img/yavor-site-logo.svg"></a>
+  </h1>
+
+  <nav class="site-nav">
+    
+      
+      
+    <a href="/"  >Home</a>
+    
+      
+      
+    <a href="/bits-and-bytes/"   title="Bits and bytes I've done and written" >Bits and bytes</a>
+    
+      
+      
+    <a href="/about/"   title="Learn about me" >About me</a>
+    
+      
+      
+    <a href="/contact/"   title="Ping me a message" >Contact</a>
+    
+  </nav>
+
+</header>
+<!-- site-header -->
+
+
+      <div class="site-content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">CCiPort - a video on demand platform</h1>
+    <time class="post-date" datetime="2009-09-10 00:00:00 +0000">
+    
+    
+    Sept.
+      
+    10th
+    2009
+    </time>
+  </header>
+
+  <div class="post-content pretty-links">
+    <p><strong>CCiPort</strong> is the final project for my MSc Digital Media course. It is a website that offers video on demand and, potentially, other media related opportunities to both staff and students of the Faculty of Creative and Cultural Industries at the University of Portsmouth. It is a web channel for the University TV and also a video showcase for the students from the Creative Technologies school.</p>
+
+<h2 id="short-intro">Short Intro</h2>
+
+<p><img class="img-inline-right" src="/assets/img/master-project/cciport_dissertation.png" /></p>
+
+<p>The final project of my MSc Digital Media course, with the title CCiPort, involves the creation of a video on demand website for the School of Creative Technologies at the University of Portsmouth.</p>
+
+<p>On the one hand, this website hosts all programs created by the school’s TV channel called CCiTV and has the option to stream live over the net.</p>
+
+<p>On the other hand, it is a website, where students from the School of Creative Technologies are able to upload their own videos (created either for a class or as a side project). These videos are available to lecturers who are registered on the website. The lecturers are able to view them and choose the best ones and feature them on the public part of the website where they can be viewed by anyone over the web.</p>
+
+<p>This essentially loads CCiPort with two main functions – a web channel for CCiTV and a video showcase for the School of Creative Technologies.</p>
+
+<h2 id="screenshot-previews">Screenshot previews</h2>
+<p>Here is a quick screenshot overview of the front end of the system before we dive into architecture.</p>
+
+<h3 id="cciport-logo">CCiPort Logo</h3>
+
+<p><img src="/assets/img/master-project/cciport_1.jpg" /></p>
+
+<p><em>The logo of the website had to clearly show its connection with the faculty of Creative and Cultural Industries at the University of Portsmouth.</em></p>
+
+<hr />
+
+<h3 id="home-page">Home Page</h3>
+
+<p><img src="/assets/img/master-project/cciport_2.jpg" /></p>
+
+<p><em>The Home page shows the best videos voted by professors (the so called “Our best bits”)</em></p>
+
+<hr />
+
+<h3 id="video-search">Video Search</h3>
+
+<p><img src="/assets/img/master-project/cciport_3.jpg" /></p>
+
+<p><em>CCiPort provides extensive search options for filtering the video content according to categories, sets and keywords.</em></p>
+
+<hr />
+
+<h3 id="upload-page">Upload Page</h3>
+
+<p><img src="/assets/img/master-project/cciport_4.jpg" /></p>
+
+<p><em>The video upload requires thourough description of the video to be entered - title, category, description, keywords. Only registered users can upload videos.</em></p>
+
+<hr />
+
+<h3 id="registration">Registration</h3>
+
+<p><img src="/assets/img/master-project/cciport_5.jpg" /></p>
+
+<p><em>The registration process is designed in a way that makes it virtually impossible for someone outside the university to register. It uses AJAX to immediatelly check the entered data against the database to prevent errors.</em></p>
+
+<hr />
+
+<h3 id="advanced-player">Advanced Player</h3>
+
+<p><img src="/assets/img/master-project/cciport_6.jpg" /></p>
+
+<p><em>This is the advanced flash application available only to lecturers. It enables lecturers to interactively create annotations onto the students videos as feedback.</em></p>
+
+<hr />
+
+<h3 id="profile-page">Profile Page</h3>
+
+<p><img src="/assets/img/master-project/cciport_7.jpg" /></p>
+
+<p><em>The profile page shows the registered user’s videos only, including the annotations made by lecturers on those videos. This way they can get immediate and clear feedback from lecturers about the submitted material.</em></p>
+
+<h2 id="project-objectives">Project Objectives</h2>
+
+<p>The requirements elicitation process starts with capturing the objectives and expectations of the project’s stakeholders. Based on the meetings and conversations with the clients of the current project several objectives were defined. All of those key points were successfully completed in the final result according to clients’ final evaluations. Some of the main objectives are as follows:</p>
+
+<ul>
+  <li>Should be developed within a <strong>three and a half month period</strong></li>
+  <li>Must stream videos using <strong>Flash Media Streaming Server 3.5</strong> and the associated with it RTMP (Real Time Protocol).</li>
+  <li>Must be <strong>compatible with the latest versions of the leading web browsers at the time</strong></li>
+  <li>Must be <strong>secure</strong>.</li>
+  <li>The website should support four types of user accounts - <strong>students, lecturers, CCiTV and administrator</strong>.</li>
+  <li>Should provide a <strong>system for annotating</strong> student videos.</li>
+  <li>Should allow <strong>easy maintenance</strong> and should be able to accommodate <strong>further extensions</strong>.</li>
+  <li>Should be <strong>well designed</strong> and <strong>easy to navigate</strong>.</li>
+</ul>
+
+<h2 id="macro-architecture">Macro Architecture</h2>
+
+<p>An important first step before designing the web application is to create a model of the environment that it is going to run in. This will provide a macro view of the architecture before focusing on the separate elements.</p>
+
+<p><img class="img-inline-right" src="/assets/img/master-project/cciport_macro_architecture.png" /></p>
+
+<p>The CCiPort website is designed to make use of three separate server machines. One is the main Web server (running Apache) listening to HTTP requests and essentially hosting the web application including the PHP framework and the MySQL Database Management System.</p>
+
+<p>Another machine is dedicated to encoding the uploaded videos into the proper format (the encoding software is chosen by the clients’ technical support team and is out of the scope of the current project). The encoding machine receives videos via the File Transfer Protocol (FTP) or HTTP, encodes them, creates thumbnails and transfers the ready videos to the streaming server (again via FTP or HTTP).</p>
+
+<p>The third machine acts as a media streaming server that delivers all video content via the Real Time Messaging Protocol (RTMP). It runs the Flash Media Streaming Server 3.5, which also comes with an Apache server incorporated into the system. This way the third machine can listen to HTTP requests as well (and deliver media via that protocol if it has to). The delivery of the video content requires Flash Player 10 to be installed on the client machine.</p>
+
+<h2 id="php-application-architecture">PHP Application Architecture</h2>
+
+<p>CCiPort uses the MVC (Model-View-Controller) architectural pattern. The MVC pattern separates the components of the application into three groups – application logic components, data components and presentation components.</p>
+
+<p><img class="img-inline-left" src="/assets/img/master-project/cciport_codeigniter.png" /></p>
+
+<p>The CCiPort project utilizes the popular open-source PHP MVC framework called CodeIgniter.</p>
+
+<p>Apart from being extremely light as a framework, CodeIgniter comes with an extensive library of classes that make easier the implementation of form validation, database manipulations, XSS filtering, authentication, sessions etc.</p>
+
+<h2 id="flash-video-player-applications">Flash Video Player Applications</h2>
+
+<p>CCiPort offers three flash applications (or three versions of video players):</p>
+
+<h3 id="a-general-flash-video-player">A general flash video player</h3>
+
+<p><img src="/assets/img/master-project/cciport_base_player.png" /></p>
+
+<p>This player provides basic functionalities including playback controls, progress bar, volume controls, quality controls, etc. It is also able to catch live streams. This version of the video player is embedded on the Home page of the website and also the general video playback page. This version of the flash video player was based on the Actionscript 3 classes of the default player that comes with the installation of the FMS 3.5</p>
+
+<hr />
+
+<h3 id="annotation-reading-video-player">Annotation-reading video player</h3>
+
+<p><img src="/assets/img/master-project/cciport_captions_read_player.png" /></p>
+
+<p>This player is an extension to the basic player. It is able to load the annotations made by lecturers on the students’ personal videos. Therefore, this version of the player is only available on the profile page of the logged in users.</p>
+
+<hr />
+
+<h3 id="annotation-creating-flash-video-player">Annotation-creating flash video player</h3>
+<p><img src="/assets/img/master-project/cciport_advanced_player.png" /></p>
+
+<p>This is the video player application available only to lecturers. Using that application the lecturer can interactively create annotations onto the video.</p>
+
+<p>The Captions classes written to extend the basic functionality of the flash video player use an interesting method to transfer and keep the captions data. Instead of using XML (which is the usual way of transferring data when working with Actionscript) those classes use the Action Message Format (AMF) to allow binary serialization of Actionscript 3 native types and objects to be sent to the server side. This way PHP methods and functions can be referenced directly within Actionscript and the data can be stored in the MySQL database.</p>
+
+<hr />
+
+<h2 id="final-words">Final words</h2>
+
+<p>This short overview of the CCiPort project just gives a basic hint of the development process and the used technologies and software. In case you are curious about any of the stages of the project and would like to dig deeper into some of its aspects, please contact me and I’ll be more than happy to answer all your questions.</p>
+
+  </div>
+
+</article>
+
+      </div>
+      <!-- site-content -->
+
+      <footer class="site-footer">
+
+    <div class="site-copy">
+        &copy; 2018<span class="site-author">Yavor Atanasov</span>
+    </div>
+    <div class="site-contact">
+        <ul>
+        
+        <li><a href="https://keybase.io/yavor_atanasov">Keybase</a></li>
+        
+
+        
+        <li><a target="_blank" rel="external" href="https://github.com/yavor-atanasov">Github</a></li>
+        
+
+        
+        <li><a target="_blank" rel="external" href="https://twitter.com/yavor_atanasov">Twitter</a></li>
+        
+
+        
+        <li><a target="_blank" rel="external" href="https://www.linkedin.com/in/yavoratanasov/">LinkedIn</a></li>
+        
+        </ul>
+    </div>
+
+</footer>
+<!-- site-footer -->
+
+
+
+
+    </div>
+
+  </body>
+
+</html>
