@@ -57,6 +57,8 @@ include:
   - _pages                  # all your pages can be put inside pages (except articles)
 exclude:
   - README.md
+  - Makefile
+  - Dockerfile
   - vendor
 gems:
   - jekyll-paginate
