@@ -26,3 +26,11 @@ Serving the website locally:
 ```
 $ jekyll serve -H 0.0.0.0
 ```
+
+# Build make targets
+Sets up required environment via docker
+```
+$ make build
+$ git diff | vim -R -
+$ make YAV_AWS_KEY="<>" YAV_AWS_SECRET_KEY="<>" publish
+```
